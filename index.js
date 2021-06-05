@@ -1,19 +1,12 @@
 var express = require('express'),
     app = express(),
-    bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     mongoose = require('mongoose')
 
 require('dotenv').config()
 
 // Connection to DB
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.z6oee.gcp.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, function (err, res) {
-    if (err) throw err
-    console.log('Connected to Database')
-})
+const connection = require('./database/dbConnection')
 
 // CORS
 app.use((req, res, next) => {
@@ -26,8 +19,8 @@ app.use((req, res, next) => {
 
 
 // Middlewares
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 app.use(methodOverride())
 
 // Models
