@@ -4,9 +4,7 @@
   "description": "Servidor de GeoFind en JavaScript",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start-debug": "node --inspect index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -r dotenv/config index.js"
   },
   "repository": {
     "type": "git",
@@ -19,10 +17,9 @@
   },
   "homepage": "https://github.com/martinlaizg/geo-find-server-js#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.9.22"
+    "mongoose": "^5.12.13"
   }
 }
